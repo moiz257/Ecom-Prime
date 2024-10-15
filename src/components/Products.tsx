@@ -1,8 +1,8 @@
 "use client";
 import { motion } from 'framer-motion';
-import Image, { StaticImageData } from 'next/image'; // Importing Next.js Image component
+import Image, { StaticImageData } from 'next/image';
 import { useEffect, useState } from 'react';
-import Link from 'next/link'; // Import Link for navigation
+import Link from 'next/link';
 
 // Import images
 import Shirt from "@/public/shirt3.jpg";
@@ -14,11 +14,11 @@ import Skinny from "@/public/jeans3.jpg";
 import Graphic from "@/public/graphic.jpg";
 import Chadda from "@/public/Chadda.jpg";
 
-// Define the types for props (if needed) or product data (optional)
+// Define the types for props (if needed) or product data
 interface Product {
   name: string;
   price: string;
-  image: StaticImageData | string; // Adding image property
+  image: StaticImageData | string; // Keep as is
 }
 
 const ProductSection: React.FC = () => {
@@ -48,7 +48,7 @@ const ProductSection: React.FC = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.8 } },
   };
 
-  // Dummy product data with unique images
+  // Dummy product data
   const newArrivals: Product[] = [
     { name: "T-shirt with Tape Details", price: "$120", image: Shirt },
     { name: "Skinny Fit Jeans", price: "$240", image: Jeans },
@@ -65,7 +65,6 @@ const ProductSection: React.FC = () => {
 
   return (
     <section id="product-section" className="flex flex-col items-center p-10">
-      {/* New Arrivals */}
       <motion.h2
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -75,7 +74,6 @@ const ProductSection: React.FC = () => {
         NEW ARRIVALS
       </motion.h2>
 
-      {/* Responsive grid for new arrivals */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         initial="hidden"
@@ -85,11 +83,10 @@ const ProductSection: React.FC = () => {
         {newArrivals.map((product, index) => (
           <Link
             href="/product"
-            key={product.name + index} // Add unique key prop
+            key={product.name + index}
             className="text-center cursor-pointer"
           >
             <div className="w-[200px] h-[300px] overflow-hidden mx-auto">
-              {/* Fixed size for image box */}
               <Image
                 src={product.image}
                 alt={product.name}
@@ -104,14 +101,12 @@ const ProductSection: React.FC = () => {
         ))}
       </motion.div>
 
-      {/* View All Button */}
       <Link href="/newArrivals">
         <button className="w-24 items-center justify-center mt-3 bg-black rounded-2xl text-white px-4 py-3 hover:bg-white border border-black transition-all ease-in-out duration-700 hover:text-black">
           View All
         </button>
       </Link>
 
-      {/* Top Selling */}
       <motion.h2
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -121,7 +116,6 @@ const ProductSection: React.FC = () => {
         TOP SELLING
       </motion.h2>
 
-      {/* Responsive grid for top selling */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         initial="hidden"
@@ -131,7 +125,7 @@ const ProductSection: React.FC = () => {
         {topSelling.map((product, index) => (
           <Link
             href="/product"
-            key={product.name + index} // Add unique key prop
+            key={product.name + index}
             className="text-center cursor-pointer"
           >
             <div className="w-[200px] h-[300px] overflow-hidden mx-auto">
