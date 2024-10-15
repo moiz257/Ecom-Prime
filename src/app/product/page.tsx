@@ -10,8 +10,6 @@ import Shirt from "@/public/shirt3.jpg";
 import Check from "@/public/check.jpg";
 import Stripped from "@/public/tshirt2.jpg";
 
-interface ProductDetailProps {} // Keep or remove this if no props are needed
-
 interface Product {
     id: string;
     name: string;
@@ -19,7 +17,7 @@ interface Product {
     image: StaticImageData | string;
 }
 
-const ProductDetail: React.FC<ProductDetailProps> = () => {
+const ProductDetail: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(Tshirt);
   const [selectedSize, setSelectedSize] = useState("Medium");
   const [selectedColor, setSelectedColor] = useState("black");
@@ -56,7 +54,6 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
 
   return (
     <div className="flex flex-col p-8 sm:px-14 sm:py-10 bg-gray-100 space-y-12">
-      
       {/* Product Details Section */}
       <div className="flex flex-col lg:flex-row items-start lg:space-x-8">
         {/* Main Product Image and Thumbnails */}
@@ -109,7 +106,7 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
                 <motion.button
                   key={size}
                   whileHover={{ scale: 1.05 }}
-                  className={`px-4 py-2 border ${selectedSize === size ? 'border-black bg-black text-white'  : 'border-gray-300'} rounded-full cursor-pointer`}
+                  className={`px-4 py-2 border ${selectedSize === size ? 'border-black bg-black text-white' : 'border-gray-300'} rounded-full cursor-pointer`}
                   onClick={() => setSelectedSize(size)}
                 >
                   {size}
@@ -174,17 +171,11 @@ const ProductDetail: React.FC<ProductDetailProps> = () => {
         <motion.div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {newArrivals.map((product) => (
             <div key={product.id} className="text-center">
-              <div className="w-[200px] h-[300px] overflow-hidden mx-auto">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={200}
-                  height={300}
-                  className="rounded-md object-cover w-full h-full"
-                />
+              <div className="w-[200px] h-[300px] mb-2">
+                <Image src={product.image} alt={product.name} width={200} height={300} className="object-cover rounded-md" />
               </div>
-              <h3 className="mt-4 text-lg font-bold">{product.name}</h3>
-              <span className="text-xl font-semibold">{product.price}</span>
+              <h3 className="font-bold">{product.name}</h3>
+              <p className="text-lg font-semibold">{product.price}</p>
             </div>
           ))}
         </motion.div>
