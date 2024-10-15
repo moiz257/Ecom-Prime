@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import { motion } from "framer-motion";
-import BgPic from "@/public/Bgpic.png"
+import BgPic from "@/public/Bgpic.png";
 import Image from "next/image";
 import Prada from "@/public/prada.png";
 import Gucci from "@/public/gucci.png";
@@ -31,7 +31,7 @@ const Hero = () => {
             designed to bring out your individuality and cater to your sense of
             style.
           </p>
-          <button className="w-full sm:w-[150px] rounded-full px-6 py-3 bg-black text-white  hover:bg-transparent border border-black hover:text-black transition-all ease-in-out duration-700">
+          <button className="w-full sm:w-[150px] rounded-full px-6 py-3 bg-black text-white hover:bg-transparent border border-black hover:text-black transition-all ease-in-out duration-700">
             Shop Now
           </button>
         </motion.div>
@@ -39,24 +39,27 @@ const Hero = () => {
         {/* Animated Numbers */}
         <div className="flex space-x-8 justify-center md:justify-start mt-8">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial="hidden"
+            animate="visible"
+            variants={numberAnimation}
             transition={{ duration: 1, delay: 0.5 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold">200+</h2>
             <p className="text-sm md:text-base">International Brands</p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial="hidden"
+            animate="visible"
+            variants={numberAnimation}
             transition={{ duration: 1, delay: 0.8 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold">2,000+</h2>
             <p className="text-sm md:text-base">High-Quality Products</p>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial="hidden"
+            animate="visible"
+            variants={numberAnimation}
             transition={{ duration: 1, delay: 1.1 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold">30,000+</h2>
@@ -73,7 +76,7 @@ const Hero = () => {
         transition={{ duration: 1.5 }}
       >
         <Image
-          src={BgPic} // Replace with your image path
+          src={BgPic}
           alt="Background"
           className="object-cover h-full w-full"
           priority
@@ -85,7 +88,6 @@ const Hero = () => {
   );
 };
 
-// Brand Slider Component
 // Brand Slider Component
 const BrandSlider = () => {
   return (
@@ -119,16 +121,14 @@ const BrandSlider = () => {
       </div>
     </section>
   );
-};
-
+}
 
 export default function Page() {
   return (
     <main>
-     <Hero />
+      <Hero />
       {/* Brand Slider Below the Hero Section */}
       <BrandSlider />
     </main>
-    
   );
 }

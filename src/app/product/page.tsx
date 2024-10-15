@@ -10,7 +10,7 @@ import Shirt from "@/public/shirt3.jpg";
 import Check from "@/public/check.jpg";
 import Stripped from "@/public/tshirt2.jpg";
 
-interface ProductDetailProps {}
+interface ProductDetailProps {} // Keep or remove this if no props are needed
 
 interface Product {
     id: string;
